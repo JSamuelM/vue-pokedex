@@ -1,5 +1,7 @@
 <template>
-  <div class="pokemon d-flex">
+  <div class="pokemon d-flex"
+    @click="$router.push({name: 'pokemon-id', params: {id: id}})"
+  >
     <div>
       <p>{{ pokemon.name }}</p>
     </div>
