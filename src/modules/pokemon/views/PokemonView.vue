@@ -38,7 +38,7 @@ export default {
   background: #0dcaf0
   font-size: 18px
   padding: 10px
-  margin: 0 auto
+  margin: 20px auto
   text-align: center
   width: 30%
 </style>

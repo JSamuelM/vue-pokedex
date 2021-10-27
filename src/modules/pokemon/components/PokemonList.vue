@@ -4,7 +4,7 @@
     <div class="input">
       <input type="text" placeholder="Buscar Pokemon..." v-model="name">
     </div>
-    <div class="d-flex pokemon-list">
+    <div class="pokemon-list">
       <Pokemon
         v-for="(pokemon, index) in pokemonsByName"
         :key="pokemon"
@@ -39,23 +39,22 @@ export default {
 
 <style lang="stylus" scoped>
 h1
+  font-size: 54px
+  margin-bottom: 40px
   text-align: center
 .pokemon-list
-  flex-direction: row
-  flex-wrap: wrap
-  align-items: center
-  justify-content: center
-  width: 100%
-  > div
-    flex: 48%
-    height: 100px
+  display: grid
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr))
+  grid-gap: 20px
 .input
   margin: 0 auto
   width: 50%
   input
-    height: 20px
+    border: 0
+    border-radius: 10px
     font-size: 16px
-    padding: 5px 10px
-    margin-bottom: 20px
+    height: 20px
+    margin-bottom: 40px
+    padding: 10px
     width: 100%
 </style>

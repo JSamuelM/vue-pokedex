@@ -1,13 +1,10 @@
 <template>
-  <div class="pokemon d-flex"
+  <div class="pokemon"
     @click="$router.push({name: 'pokemon-id', params: {id: id}})"
   >
-    <div>
-      <p>{{ pokemon.name }}</p>
-    </div>
-    <div>
-      <img :src="imgSrc" alt="pokemon image">
-    </div>
+    <img :src="imgSrc" alt="pokemon image" class="pokemon__image">
+    <p class="pokemon__name">{{id}}. {{ pokemon.name }}</p>
+    <p class="pokemon__type">Type: Grass, Poison</p>
   </div>
 </template>
 
@@ -33,14 +30,34 @@ export default {
 
 <style lang="stylus" scoped>
 .pokemon
-  align-items: center
-  background-color: white
-  border: 1px solid #0dcaf0
+  background-color: #f4f4f4
+  border-radius: 15px
+  color: #222
   cursor: pointer
-  color: black
-  justify-content: center
-  margin: 10px 5px
-  text-transform: capitalize
-  p
-    font-weight: bold
+  padding: 40px
+  text-align: center
+  &:hover
+    @-webkit-animation: bounce 0.5 linear
+    animation: bounce 0.5 linear
+  img.pokemon__image
+    height: 180px
+  p.pokemon__name
+    font-size: 32px
+    font-weight: normal
+    margin-bottom: 0px
+    text-transform: capitalize
+  p.pokemon__type
+    font-weight: lighter
+    color: #666
+    margin-top: 5px
+    text-transform: capitalize
+@keyframes bounce
+  20%
+    transform: translateY(-6px)
+  40%
+    transform: translateY(0px)
+  60%
+    transform: translateY(-2px)
+  80%
+    transform: translateY(-0px)
 </style>
