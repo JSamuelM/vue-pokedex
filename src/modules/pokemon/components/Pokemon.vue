@@ -1,6 +1,6 @@
 <template>
   <div class="pokemon"
-    @click="$router.push({name: 'pokemon-id', params: {id: id}})"
+    @click="$router.push({name: 'pokemon-id', params: {id: pokemon.id}})"
   >
     <img :src="pokemon.image" alt="pokemon image" class="pokemon__image">
     <p class="pokemon__name">{{pokemon.id}}. {{ pokemon.name }}</p>
@@ -23,10 +23,6 @@ export default {
   props: {
     pokemon: {
       type: Object,
-      required: true
-    },
-    id: {
-      type: Number,
       required: true
     }
   },

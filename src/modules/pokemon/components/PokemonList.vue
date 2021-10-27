@@ -6,10 +6,9 @@
     </div>
     <div class="pokemon-list">
       <Pokemon
-        v-for="(pokemon, index) in pokemonsByName"
+        v-for="pokemon in pokemonsByName"
         :key="pokemon"
         :pokemon="pokemon"
-        :id="index + 1"
       />
     </div>
   </div>

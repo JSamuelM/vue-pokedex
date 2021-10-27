@@ -5,7 +5,7 @@
         <i class="fa fa-arrow-left"></i>
       </button>
       <button class="favorite">
-        <i class="fa fa-heart"></i>
+        <i class="far fa-heart"></i>
       </button>
       <div class="card-info">
         <div class="pokemon">
@@ -76,15 +76,18 @@ button
   width: 50px
 button.goBack
   background: #0dcaf0
+  border-radius: 15px 0 0 0
   border: 1px solid #0dcaf0
   left: 0px
 button.favorite
   background: #dc3545
+  border-radius: 0 15px 0 0
   border: 1px solid #dc3545
   right: 0px
 .card
   align-items: center
   background: white
+  border-radius: 15px
   color: black
   display: flex
   justify-content: center

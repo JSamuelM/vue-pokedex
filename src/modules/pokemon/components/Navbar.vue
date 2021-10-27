@@ -8,16 +8,23 @@
         Pokedex Vue
     </a>
     <div class="navbar__buttons">
-      <button type="button">
-        <i class="fa fa-sign-out-alt"></i>
+      <button type="button" class="login">
+        <i class="fas fa-sign-in-alt"></i>
+      </button>
+      <button type="button" class="logout">
+        <i class="fas fa-sign-out-alt"></i>
       </button>
     </div>
   </nav>
 </template>
 
 <script>
-export default {
+import { mapState } from 'vuex'
 
+export default {
+  computed: [
+    
+  ]
 }
 </script>
 
@@ -38,11 +45,18 @@ export default {
       margin-right: 5px
   .navbar__buttons
     button
-      background: #0dcaf0
-      border: 1px solid #0dcaf0
+      // background: #0dcaf0
+      border-radius: 10px
+      // border: 1px solid #0dcaf0
       color: #222
       cursor: pointer
       height: 40px
       padding: 5px 10px
       width: 40px
+    .login
+      background: #0dcaf0
+      border: 1px solid #0dcaf0
+    .logout
+      background: #dc3545
+      border: 1px solid #dc3545
 </style>
