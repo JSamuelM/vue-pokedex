@@ -45,7 +45,7 @@ h1
 .pokemon-list
   display: grid
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr))
-  grid-gap: 20px
+  grid-gap: 25px
 .input
   margin: 0 auto
   width: 50%
