@@ -11,6 +11,15 @@
       <div class="card-info">
         <div class="pokemon">
           <h1>{{ pokemon.name }}</h1>
+          <ul>
+            Types:
+            <li
+              v-for="type in pokemon.types.map(type => type.type.name)"
+              :key="type"
+            >
+              {{type}}
+            </li> 
+          </ul>
           <img
             :src="imgSrc + pokemon.id + '.png'"
             alt="pokemon picture"
@@ -18,22 +27,35 @@
             <p class="pokemon__id">#{{ pokemon.id }}</p>
         </div>
         <div class="info">
-          <div class="abilities">
-            <h3>Habilidades</h3>
-            <ul>
-              <li
-                v-for="(abilities, index) in pokemon.abilities"
-                :key="index"
-              >
-                {{ abilities.ability.name }}
-              </li>
-            </ul>
-          </div>
           <div class="information">
-            <h3>Información</h3>
+            <h3>About</h3>
+            <p>
+              <span>Abilities: </span>
+              <span
+                v-for="(abilities, index) in 
+                        pokemon.abilities.map(text => text.ability.name).join(', ')"
+                :key="index"
+                class="information-type
+                  font-weight: normal
+                  text-transform: capitalize"
+              >
+                {{ abilities }}
+              </span>
+            </p>
             <p><span>Peso: </span>{{pokemon.weight}} Lb</p>
             <p><span>Size: </span>{{pokemon.height}} m</p>
             <p><span>Género: </span>10</p>
+          </div>
+          <div class="information">
+            <h3>Pokemon Stats</h3>
+            <div
+              class="infomration-stat"
+              v-for="(stats, index) in pokemon.stats"
+              :key="index"
+            >
+              <span class="stat">{{stats.stat.name}}:</span>
+              <input type="range" disabled readonly :value="stats.base_stat">
+            </div>
           </div>
         </div>
       </div>
@@ -63,6 +85,9 @@ export default {
     },
     addFavorite() {
       console.log(this.pokemon);
+    },
+    statsChart() {
+
     }
   },
   computed: {
@@ -71,6 +96,9 @@ export default {
   },
   created() {
     this.loadInfo()
+  },
+  mounted() {
+
   }
 }
 </script>
@@ -108,23 +136,44 @@ button.favorite:disabled
   padding: 20px 30px
   margin: 2em auto
   position: relative
-  width: 75%
+  width: 50%
+  @media screen and (min-width: 375px)
+    width: 80%
+  @media screen and (min-width: 768px)
+    width: 80%
+  @media screen and (min-width: 1024px)
+    width: 50%
   .card-info
     display: flex
     flex-direction: row
     justify-content: space-around
     width: 100%
     text-transform: capitalize
+    @media screen and (max-width: 768px)
+      flex-direction: column
     .pokemon
       align-items: center
       display: flex
       flex-direction: column
       justify-content: center
+      ul
+        display: inline-block
+        font-size: 16px
+        font-weight: lighter
+        padding: 0
+        li
+          background: #343a40
+          border-radius: 15px
+          color: white
+          display: inline-block
+          list-style: none
+          margin: 0 5px
+          padding: 7px 10px
       img.pokemon__image
         background: #2c3e50
         border-radius: 50%
-        height: 100px
-        width: 100px
+        height: 180px
+        width: 180px
       .pokemon__id
         font-size: 20px
         font-weight: bold
@@ -133,23 +182,27 @@ button.favorite:disabled
     .info
       display: flex
       flex-direction: column
-      .abilities
+      .information
         h3
           font-weight: bold
-        ul
-          padding-left: 10px
-          li
-            color: white
-            background: #198754
-            border-radius: 15px
-            display: inline-block
-            list-style: none
-            padding: 5px 10px
-            margin-right: 5px
-            margin-bottom: 5px
-      .information
+        span.information-type
+          font-weight: normal
+          text-transform: capitalize
+        .infomration-stat
+          display: flex
+          align-items: center
+          justify-content: space-between
+          margin-bottom: 10px
+          input[type='range']::-webkit-slider-thumb
+            -webkit-appearance: none
+            -moz-appearance: none
+            width: 0
+            height: 0
+        span.stat
+          font-weight: bold
+          text-transform: capitalize
         p
-          margin: 5px 0px
+          margin-bottom: 10px
           span
-            font-weight: bold 
+            font-weight: bold
 </style>
