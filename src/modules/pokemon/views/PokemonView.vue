@@ -1,13 +1,15 @@
 <template>
-  <Navbar />
-  <div v-if="isLoading">
-    <div class="alert">
-      <h2>Cargando...</h2>
-      <i class="fa fa-spin fa-sync"></i>
+  <div class="container">
+    <Navbar />
+    <div v-if="isLoading">
+      <div class="alert">
+        <h2>Cargando...</h2>
+        <i class="fa fa-spin fa-sync"></i>
+      </div>
     </div>
-  </div>
-  <div v-else>
-    <PokemonList />
+    <div v-else>
+      <PokemonList />
+    </div>
   </div>
 </template>
 
@@ -17,7 +19,7 @@ import { mapActions, mapState } from 'vuex'
 
 export default {
   components: {
-    Navbar: defineAsyncComponent(() => import('../components/Navbar.vue')),
+    Navbar: defineAsyncComponent(() => import('@/components/Navbar.vue')),
     PokemonList: defineAsyncComponent(() => import('../components/PokemonList.vue'))
   },
   methods: {
@@ -33,6 +35,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+.container
+  margin: 30px auto
 .alert
   color: white
   background: #0dcaf0

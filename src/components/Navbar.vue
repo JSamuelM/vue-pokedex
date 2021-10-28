@@ -9,13 +9,19 @@
     </a>
     <div class="navbar__buttons">
       <div v-if="!isAuth">
-        <router-link to="login">
+        <router-link :to="{ name: 'pokemon'}">
+          <button type="button" class="home">
+            <i class="fas fa-home"></i>
+            Home
+          </button>
+        </router-link>
+        <router-link :to="{ name: 'login'}">
           <button type="button" class="login">
             <i class="fas fa-sign-in-alt"></i>
             Login
           </button>
         </router-link>
-        <router-link to="register">
+        <router-link :to="{ name: 'register'}">
           <button type="button" class="register">
             <i class="fas fa-user-plus"></i>
             Register
@@ -23,12 +29,6 @@
         </router-link>
       </div>
       <div v-if="isAuth">
-        <router-link to="/pokemon">
-          <button type="button" class="home">
-            <i class="fas fa-home"></i>
-            Home
-          </button>
-        </router-link>
         <button type="button" class="logout" @click.passive="logOut">
           <i class="fas fa-user-plus"></i>
           LogOut
