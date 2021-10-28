@@ -1,4 +1,5 @@
 export default () => ({
   isAuth: false,
-  user: {}
+  user: null,
+  error: null
 });

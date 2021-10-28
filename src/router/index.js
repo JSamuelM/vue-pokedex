@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 
+import authRouter from '@/modules/auth/router'
+
 const routes = [
   {
     path: '/',
@@ -26,10 +28,9 @@ const routes = [
     component: () => import(/* webpackChunkName: "pokemon-id" */ '../modules/pokemon/views/PokemonDetailView.vue')
   },
   {
-    path: '/login',
-    name: 'login',
-    component: () => import(/* webpackChunkName: "login" */ '../modules/auth/views/Login.vue')
-  }
+    path: '/auth',
+    ...authRouter
+  },
 ]
 
 const router = createRouter({
