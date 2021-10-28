@@ -10,7 +10,6 @@ export const signUpAction = async ({ commit }, payload) => {
         console.log(resp);
         commit("setUser", resp.user);
         commit("setIsAuth", true);
-        this.$router.push({name: 'pokemon'})
       })
       .catch((error) => {
         const errorMessage = error.message;
