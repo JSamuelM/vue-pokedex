@@ -58,6 +58,19 @@
             </div>
           </div>
         </div>
+        <div class="evolution">
+          <h1>Evolution Chain</h1>
+          <div class="evolution-items">
+            <div 
+              v-for="(item, index) in evolutionChain"
+              :key="index++"
+              class="item"
+            >
+              <img :src="imgSrc+index+'.png'" />
+              <p>{{item.species_name}}</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -78,7 +91,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions('pokemon', ['loadPokemon']),
+    ...mapActions('pokemon', ['loadPokemon', 'loadEvolutionChain']),
     loadInfo() {
       const id = this.$route.params.id
       this.loadPokemon(id)
@@ -92,13 +105,13 @@ export default {
   },
   computed: {
     ...mapState('auth', ['isAuth']),
-    ...mapState('pokemon', ['pokemon'])
+    ...mapState('pokemon', ['pokemon', 'evolutionChain'])
   },
   created() {
     this.loadInfo()
   },
   mounted() {
-
+    this.loadEvolutionChain(this.pokemon.id)
   }
 }
 </script>
@@ -144,9 +157,11 @@ button.favorite:disabled
   @media screen and (min-width: 1024px)
     width: 50%
   .card-info
-    display: flex
-    flex-direction: row
-    justify-content: space-around
+    display: grid
+    grid-template-columns: repeat(2, 1fr)
+    grid-template-rows: repeat(2, 1fr)
+    grid-column-gap: 10px
+    grid-row-gap: 10px
     width: 100%
     text-transform: capitalize
     @media screen and (max-width: 768px)
@@ -156,6 +171,7 @@ button.favorite:disabled
       display: flex
       flex-direction: column
       justify-content: center
+      grid-area: 1 / 1 / 2 / 2
       ul
         display: inline-block
         font-size: 16px
@@ -182,6 +198,7 @@ button.favorite:disabled
     .info
       display: flex
       flex-direction: column
+      grid-area: 1 / 2 / 2 / 3
       .information
         h3
           font-weight: bold
@@ -205,4 +222,31 @@ button.favorite:disabled
           margin-bottom: 10px
           span
             font-weight: bold
+    .evolution
+      grid-area: 2 / 1 / 3 / 3
+      .evolution-items
+        display: grid;
+        grid-column-gap: 30px;
+        grid-row-gap: px;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 1fr;
+        margin-top: 50px
+        .item
+          border: 1px solid #000
+          border-radius: 7px
+          color: #000
+          display: flex
+          flex-direction: column
+          font-weight: bold
+          text-align: center
+          position: relative
+          img
+            background: #2c3e50
+            border-radius: 50%
+            position: absolute
+            top: -30px
+            left: 50%
+            margin-left: -50px
+          p
+            margin-top: 75px
 </style>

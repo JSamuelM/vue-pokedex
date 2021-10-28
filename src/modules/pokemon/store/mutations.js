@@ -6,3 +6,7 @@ export const setPokemons = async (state, pokemons) => {
 export const setPokemon = (state, pokemon) => {
   state.pokemon = {...pokemon}
 }
+
+export const setEvolutionChain = (state, payload) => {
+  state.evolutionChain = payload
+}

@@ -35,3 +35,27 @@ export const loadPokemon = async ({commit}, id) => {
       commit('setPokemon', resp.data)
     })
 }
+
+export const loadEvolutionChain = async ({commit}, id) => {
+  await pokemonApi.get(`/evolution-chain/${id}`)
+    .then(({data}) => {
+      const evoChain = [];
+      let evoData = data.chain;
+
+      let evoDetails = evoData['evolution_details'][0]
+      do {
+        evoChain.push({
+          "species_name": evoData.species.name,
+          "min_level": !evoDetails ? 1 : evoDetails.min_level,
+          "item": !evoDetails ? null : evoDetails.item
+        })
+
+        evoData = evoData['evolves_to'][0]
+      } while (!!evoData && evoData.hasOwnProperty('evolves_to'));
+      console.log(evoChain);
+      commit('setEvolutionChain', evoChain)
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+}
