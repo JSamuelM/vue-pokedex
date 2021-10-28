@@ -1,10 +1,11 @@
 <template>
-  <div>
+  <div class="container">
+    <Navbar />
     <div class="card">
       <button class="goBack" @click="$router.push({name: 'pokemon'})">
         <i class="fa fa-arrow-left"></i>
       </button>
-      <button class="favorite">
+      <button class="favorite" :disabled="!isAuth" @click="addFavorite">
         <i class="far fa-heart"></i>
       </button>
       <div class="card-info">
@@ -41,8 +42,13 @@
 </template>
 
 <script>
+import { defineAsyncComponent } from '@vue/runtime-core'
 import { mapActions, mapState } from 'vuex'
+
 export default {
+  components: {
+    Navbar: defineAsyncComponent(() => import('@/components/Navbar.vue'))
+  },
   data() {
     return {
       id: this.$route.params.id,
@@ -54,9 +60,13 @@ export default {
     loadInfo() {
       const id = this.$route.params.id
       this.loadPokemon(id)
+    },
+    addFavorite() {
+      console.log(this.pokemon);
     }
   },
   computed: {
+    ...mapState('auth', ['isAuth']),
     ...mapState('pokemon', ['pokemon'])
   },
   created() {
@@ -84,6 +94,10 @@ button.favorite
   border-radius: 0 15px 0 0
   border: 1px solid #dc3545
   right: 0px
+button.favorite:disabled
+    background: gray
+    border: 1px solid gray
+    cursor: not-allowed
 .card
   align-items: center
   background: white

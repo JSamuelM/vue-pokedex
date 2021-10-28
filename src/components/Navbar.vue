@@ -8,13 +8,13 @@
         Pokedex Vue
     </a>
     <div class="navbar__buttons">
+      <router-link :to="{ name: 'pokemon'}">
+        <button type="button" class="home">
+          <i class="fas fa-home"></i>
+          Home
+        </button>
+      </router-link>
       <div v-if="!isAuth">
-        <router-link :to="{ name: 'pokemon'}">
-          <button type="button" class="home">
-            <i class="fas fa-home"></i>
-            Home
-          </button>
-        </router-link>
         <router-link :to="{ name: 'login'}">
           <button type="button" class="login">
             <i class="fas fa-sign-in-alt"></i>

@@ -35,11 +35,10 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.container
-  margin: 30px auto
 .alert
-  color: white
   background: #0dcaf0
+  border-radius: 15px
+  color: white
   font-size: 18px
   padding: 10px
   margin: 20px auto
