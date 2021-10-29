@@ -10,3 +10,7 @@ export const setPokemon = (state, pokemon) => {
 export const setEvolutionChain = (state, payload) => {
   state.evolutionChain = payload
 }
+
+export const setPokemonCry = (state, payload) => {
+  state.pokemonCry = payload;
+}

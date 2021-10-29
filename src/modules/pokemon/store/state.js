@@ -2,5 +2,6 @@ export default () => ({
   isLoading: true,
   pokemons: [],
   pokemon: {},
-  evolutionChain: null
+  evolutionChain: null,
+  pokemonCry: null
 })

@@ -5,6 +5,9 @@
       <button class="goBack" @click="$router.push({name: 'pokemon'})">
         <i class="fa fa-arrow-left"></i>
       </button>
+      <button class="cry" @click.prevent="soundCry">
+        <i class="fas fa-play"></i>
+      </button>
       <button class="favorite" :disabled="!isAuth" @click="addFavorite">
         <i class="far fa-heart"></i>
       </button>
@@ -58,7 +61,7 @@
             </div>
           </div>
         </div>
-        <div class="evolution">
+        <!-- <div class="evolution">
           <h1>Evolution Chain</h1>
           <div class="evolution-items">
             <div 
@@ -70,7 +73,7 @@
               <p>{{item.species_name}}</p>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -91,21 +94,23 @@ export default {
     }
   },
   methods: {
-    ...mapActions('pokemon', ['loadPokemon', 'loadEvolutionChain']),
+    ...mapActions('pokemon', ['loadPokemon', 'loadEvolutionChain', 'loadPokemonCry']),
     loadInfo() {
       const id = this.$route.params.id
       this.loadPokemon(id)
+      this.loadPokemonCry(id)
     },
     addFavorite() {
       console.log(this.pokemon);
     },
-    statsChart() {
-
+    soundCry() {
+      let cry = new Audio(this.pokemonCry)
+      cry.play()
     }
   },
   computed: {
     ...mapState('auth', ['isAuth']),
-    ...mapState('pokemon', ['pokemon', 'evolutionChain'])
+    ...mapState('pokemon', ['pokemon', 'evolutionChain', 'pokemonCry'])
   },
   created() {
     this.loadInfo()
@@ -135,6 +140,10 @@ button.favorite
   border-radius: 0 15px 0 0
   border: 1px solid #dc3545
   right: 0px
+button.cry
+  background: #ffc107
+  border: 1px solid #ffc107
+  right: 50px
 button.favorite:disabled
     background: gray
     border: 1px solid gray

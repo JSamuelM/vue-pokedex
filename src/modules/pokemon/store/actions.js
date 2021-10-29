@@ -45,6 +45,7 @@ export const loadEvolutionChain = async ({commit}, id) => {
       let evoDetails = evoData['evolution_details'][0]
       do {
         evoChain.push({
+          "id": data.id,
           "species_name": evoData.species.name,
           "min_level": !evoDetails ? 1 : evoDetails.min_level,
           "item": !evoDetails ? null : evoDetails.item
@@ -52,10 +53,14 @@ export const loadEvolutionChain = async ({commit}, id) => {
 
         evoData = evoData['evolves_to'][0]
       } while (!!evoData && evoData.hasOwnProperty('evolves_to'));
-      console.log(evoChain);
       commit('setEvolutionChain', evoChain)
     })
     .catch((error) => {
       console.log(error);
     })
+}
+
+export const loadPokemonCry = ({commit}, id) => {
+  const cry = `../../../assets/audio/cries/${id}.ogg`
+  commit('setPokemonCry', cry)
 }
