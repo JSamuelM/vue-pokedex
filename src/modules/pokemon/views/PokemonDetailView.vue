@@ -90,22 +90,23 @@ export default {
   data() {
     return {
       id: this.$route.params.id,
-      imgSrc: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/`
+      imgSrc: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/`,
+      cry: ''
     }
   },
   methods: {
-    ...mapActions('pokemon', ['loadPokemon', 'loadEvolutionChain', 'loadPokemonCry']),
+    ...mapActions('pokemon', ['loadPokemon', 'loadEvolutionChain']),
     loadInfo() {
       const id = this.$route.params.id
       this.loadPokemon(id)
-      this.loadPokemonCry(id)
     },
     addFavorite() {
       console.log(this.pokemon);
     },
     soundCry() {
-      let cry = new Audio(this.pokemonCry)
-      cry.play()
+      this.cry = new Audio(require(`@/assets/audio/cries/${this.pokemon.id}.ogg`))
+      this.cry.volume = 0.1
+      this.cry.play()
     }
   },
   computed: {

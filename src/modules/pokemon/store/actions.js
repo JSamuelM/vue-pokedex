@@ -59,8 +59,3 @@ export const loadEvolutionChain = async ({commit}, id) => {
       console.log(error);
     })
 }
-
-export const loadPokemonCry = ({commit}, id) => {
-  const cry = `../../../assets/audio/cries/${id}.ogg`
-  commit('setPokemonCry', cry)
-}
