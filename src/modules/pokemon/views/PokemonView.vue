@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <Navbar />
     <div v-if="isLoading">
       <div class="alert">
         <h2>Cargando...</h2>
@@ -15,22 +14,21 @@
 
 <script>
 import { defineAsyncComponent } from '@vue/runtime-core'
-import { mapActions, mapState } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   components: {
-    Navbar: defineAsyncComponent(() => import('@/components/Navbar.vue')),
     PokemonList: defineAsyncComponent(() => import('../components/PokemonList.vue'))
   },
   methods: {
-    ...mapActions('pokemon', ['loadPokemons']),
+    // ...mapActions('pokemon', ['loadPokemons']),
   },
   computed: {
     ...mapState('pokemon', ['isLoading'])
   },
-  created() {
-    this.loadPokemons()
-  }
+  // created() {
+  //   this.loadPokemons()
+  // }
 }
 </script>
 

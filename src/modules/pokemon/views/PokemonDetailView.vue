@@ -1,8 +1,7 @@
 <template>
   <div class="container">
-    <Navbar />
     <div class="card">
-      <button class="goBack" @click="$router.push({name: 'pokemon'})">
+      <button class="goBack" @click="$router.push({name: 'pokemon-list'})">
         <i class="fa fa-arrow-left"></i>
       </button>
       <button class="cry" @click.prevent="soundCry">
@@ -80,13 +79,9 @@
 </template>
 
 <script>
-import { defineAsyncComponent } from '@vue/runtime-core'
 import { mapActions, mapState } from 'vuex'
 
 export default {
-  components: {
-    Navbar: defineAsyncComponent(() => import('@/components/Navbar.vue'))
-  },
   data() {
     return {
       id: this.$route.params.id,

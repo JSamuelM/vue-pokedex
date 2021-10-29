@@ -8,7 +8,7 @@
         Pokedex Vue
     </a>
     <div class="navbar__buttons">
-      <router-link :to="{ name: 'pokemon'}">
+      <router-link :to="{ name: 'pokemon-list'}">
         <button type="button" class="home">
           <i class="fas fa-home"></i>
           Home
