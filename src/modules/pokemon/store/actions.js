@@ -20,13 +20,17 @@ export const loadPokemons = async ({commit}) => {
           name: data.name,
           id: data.id,
           image: data.sprites['front_default'],
-          type: data.types
+          types: data.types
         }
         pokemonsList.push(pokemon)
       })
   }
 
   commit('setPokemons', pokemonsList)
+}
+
+export const resetPokemons = async ({commit}) => {
+  commit('resetPokemons')
 }
 
 export const loadPokemon = async ({commit}, id) => {
@@ -58,4 +62,12 @@ export const loadEvolutionChain = async ({commit}, id) => {
     .catch((error) => {
       console.log(error);
     })
+}
+
+export const addPokemonToFavorites = async ({commit}, pokemon) => {
+  try {
+    await commit('setPokemonToFavorites', pokemon)
+  } catch (error) {
+    console.log(error);
+  }
 }

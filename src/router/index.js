@@ -23,6 +23,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "pokemon" */ '../modules/pokemon/views/PokemonView.vue')
   },
   {
+    path: '/pokemon/favorites',
+    name: 'pokemon-favorites',
+    component: () => import(/* webpackChunkName: "pokemon-favorites" */ '../modules/pokemon/views/PokemonFavoritesView.vue')
+  },
+  {
     path: '/pokemon/:id',
     name: 'pokemon-id',
     component: () => import(/* webpackChunkName: "pokemon-id" */ '../modules/pokemon/views/PokemonDetailView.vue')

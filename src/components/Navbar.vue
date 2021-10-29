@@ -29,6 +29,12 @@
         </router-link>
       </div>
       <div v-if="isAuth">
+        <router-link :to="{name: 'pokemon-favorites'}">
+          <button type="button" class="favorites" @click.passive="favorites">
+            <i class="fas fa-heart"></i>
+            Favorites
+          </button>
+        </router-link>
         <button type="button" class="logout" @click.passive="logOut">
           <i class="fas fa-user-plus"></i>
           LogOut
@@ -105,5 +111,14 @@ export default {
         background: #fff
         border: 1px solid #fff
         color: #dc3545
+        transition: all 0.2s ease-in-out
+    .favorites
+      background: #343a40
+      border: 1px solid #343a40
+      color: #fff
+      &:hover
+        background: #fff
+        border: 1px solid #fff
+        color: #343a40
         transition: all 0.2s ease-in-out
 </style>

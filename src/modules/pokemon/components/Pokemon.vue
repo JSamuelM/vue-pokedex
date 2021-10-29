@@ -8,7 +8,7 @@
       Type: 
       <ul>
         <li 
-          v-for="type in pokemon.type.map(type => type.type.name)"
+          v-for="type in pokemon.types.map(type => type.type.name)"
           :key="type"
         >
           {{type}}

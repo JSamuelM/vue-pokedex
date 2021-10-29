@@ -95,13 +95,15 @@ export default {
     }
   },
   methods: {
-    ...mapActions('pokemon', ['loadPokemon', 'loadEvolutionChain']),
+    ...mapActions('pokemon', ['loadPokemon', 'loadEvolutionChain', 'addPokemonToFavorites']),
     loadInfo() {
       const id = this.$route.params.id
       this.loadPokemon(id)
     },
     addFavorite() {
       console.log(this.pokemon);
+      this.addPokemonToFavorites(this.pokemon)
+      alert('Se agrego pokemon a Favoritos')
     },
     soundCry() {
       this.cry = new Audio(require(`@/assets/audio/cries/${this.pokemon.id}.ogg`))

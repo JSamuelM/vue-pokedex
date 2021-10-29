@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1>Pokemon's</h1>
+    <h1>My Favorite Pokemon's</h1>
     <div class="input">
       <input type="text" placeholder="Buscar Pokemon..." v-model="name">
     </div>
@@ -16,8 +16,7 @@
 
 <script>
 import { defineAsyncComponent } from '@vue/runtime-core'
-import { mapGetters, mapState } from 'vuex'
-
+import { mapGetters } from 'vuex'
 export default {
   components: {
     Pokemon: defineAsyncComponent(() => import('./Pokemon.vue')),
@@ -28,10 +27,9 @@ export default {
     }
   },
   computed: {
-    ...mapState('auth', ['isAuth']),
-    ...mapGetters('pokemon', ['getPokemonsByName']),
+    ...mapGetters('pokemon', ['getPokemonsFavorites']),
     pokemonsByName() {
-      return this.getPokemonsByName(this.name)
+      return this.getPokemonsFavorites(this.name)
     }
   }
 }
