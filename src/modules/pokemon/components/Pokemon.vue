@@ -2,7 +2,16 @@
   <div class="pokemon"
     @click="$router.push({name: 'pokemon-id', params: {id: pokemon.id}})"
   >
-    <img :src="pokemon.image" alt="pokemon image" class="pokemon__image">
+    <img
+      v-if="isFavorite"
+      :src="pokemon.sprites.front_default"
+      alt="pokemon image"
+      class="pokemon__image">
+    <img
+      v-else
+      :src="pokemon.image"
+      alt="pokemon image"
+      class="pokemon__image">
     <p class="pokemon__name">{{pokemon.id}}. {{ pokemon.name }}</p>
     <p class="pokemon__type">
       Type: 
@@ -29,6 +38,11 @@ export default {
   data() {
     return {
       imgSrc: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.id}.png`
+    }
+  },
+  computed: {
+    isFavorite() {
+      return this.$route.name === 'pokemon-favorites'
     }
   }
 }

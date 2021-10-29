@@ -101,7 +101,6 @@ export default {
       this.loadPokemon(id)
     },
     addFavorite() {
-      console.log(this.pokemon);
       this.addPokemonToFavorites(this.pokemon)
       alert('Se agrego pokemon a Favoritos')
     },

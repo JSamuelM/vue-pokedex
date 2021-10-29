@@ -7,7 +7,6 @@ export const signUpAction = async ({ commit }, payload) => {
     await createUserWithEmailAndPassword(auth, payload.email, payload.password)
       .then((resp) => {
         // Signed in
-        console.log(resp);
         commit("setUser", resp.user);
         commit("setIsAuth", true);
       })
@@ -40,7 +39,6 @@ export const signOutAction = async ({ commit }) => {
     .then(() => {
       commit("setUser", null);
       commit("setIsAuth", false);
-      console.log("logout");
     })
     .catch((error) => {
       commit('setError', error.message)
